@@ -1,20 +1,10 @@
-from urllib import response
+import json
+import requests
 
-from requests import Request, Session
-
-req = Request(
-    'POST',
-    'https://api.github.com',
+req = requests.get(
+    url='https://api.github.com',
     headers={
-        'Authorization': 'token ghp_your_token',
-    },
-    json={
-        'name': 'test',
-        'body': 'test'
+        'Authorization': 'Bearer blabla'
     }
 )
-
-session = Session()
-prepared = req.prepare()
-response = session.send(prepared)
-print(response)
+print(req.text)
