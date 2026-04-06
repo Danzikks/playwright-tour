@@ -1,5 +1,4 @@
 from time import sleep
-import re
 
 from pages.elements_web_tables import ElementsWebTablesPage
 from playwright.sync_api import expect
