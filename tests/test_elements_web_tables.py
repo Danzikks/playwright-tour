@@ -28,5 +28,20 @@ def test_create_registration_form_and_delete(page):
     expect(row).not_to_be_visible()
     sleep(3)
 
-def test_delete_registration_form(page):
-    pass
+
+def test_update_form(page):
+    page.goto("https://demoqa.com/elements")
+    page.click('#item-3')
+    assert page.url == "https://demoqa.com/webtables"
+    row = page.locator('tr', has_text='kierra@example.com')
+    row.locator("[title='Edit']").click()
+    elements_web_tables = ElementsWebTablesPage(page)
+    elements_web_tables.fill_first_name('Браза')
+    elements_web_tables.fill_last_name('Мой')
+    elements_web_tables.fill_email('brasa@mail.ru')
+    elements_web_tables.submit()
+    expect(row).not_to_be_visible()
+    row = page.locator('tr', has_text='brasa@mail.ru')
+    expect(row).to_be_visible()
+    expect(row).to_contain_text('Браза')
+    expect(row).to_contain_text('Мой')
