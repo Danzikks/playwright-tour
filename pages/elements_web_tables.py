@@ -13,7 +13,6 @@ class ElementsWebTablesPage:
         self.department_input = page.locator('#userForm #department')
         self.submit_button = page.locator('#userForm #submit')
 
-
     def fill_first_name(self, first_name: str):
         self.first_name_input.fill(first_name)
 

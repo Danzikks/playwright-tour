@@ -44,4 +44,3 @@ class ElementsTextBoxPage:
 
     def get_permanent_address(self):
         return self.permanent_address_input
-
