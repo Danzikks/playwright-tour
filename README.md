@@ -1,6 +1,6 @@
 Это пет-проект playwright + pytest + allure
 
-my_project_site - это тестирование моих пет-проектов на php.  
+my_project_site - это тестирование моих пет-проектов на php, которые развёрнуты на моём self-hosted NAS сервере.   
 demosite - это открытый сайт для тренировок автотестов
 
 Для запуска тестов с генерацией отчётов allure: pytest --alluredir=./allure-results ./tests  
