@@ -5,7 +5,7 @@ demosite - это открытый сайт для тренировок авто
 
 Для запуска тестов с генерацией отчётов allure: pytest --alluredir=./allure-results ./tests  
 Для запуска тестов без генерации отчёта: pytest ./tests  
-Для просмотра отчётов теста allure: ⏺ allure serve ./allure-results  
+Для просмотра отчётов теста allure: allure serve ./allure-results  
 
 Разворачиваение проекта:
 
