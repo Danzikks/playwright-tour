@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
 
-from pages.elements_radio_button import ElementsRadioButtonPage
+from pages.demosite.elements_radio_button import ElementsRadioButtonPage
 
 
 def test_elements_radio_button(page):
