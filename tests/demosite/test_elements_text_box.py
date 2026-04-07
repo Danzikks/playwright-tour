@@ -7,11 +7,11 @@ from pages.demosite.elements_text_box import ElementsTextBoxPage
 
 @allure.title('Заполнение формы')
 @allure.description('Проверяем создание формы')
-def test_fill_name_email(page):
-    page.goto("https://demoqa.com/elements")
-    page.click('#item-0')
-    elements_text_box = ElementsTextBoxPage(page)
-    assert page.url == "https://demoqa.com/text-box"
+def test_fill_name_email(page_quick_tour):
+    page_quick_tour.goto("https://demoqa.com/elements")
+    page_quick_tour.click('#item-0')
+    elements_text_box = ElementsTextBoxPage(page_quick_tour)
+    assert page_quick_tour.url == "https://demoqa.com/text-box"
     with allure.step('Вводим имя'):
         elements_text_box.fill_full_name('John')
 
@@ -25,11 +25,11 @@ def test_fill_name_email(page):
 
 @allure.title('Невалидный email')
 @allure.description('Ввод невалидного email')
-def test_invalid_email(page):
-    elements_text_box = ElementsTextBoxPage(page)
-    page.goto("https://demoqa.com/elements")
-    page.click('#item-0')
-    assert page.url == "https://demoqa.com/text-box"
+def test_invalid_email(page_quick_tour):
+    elements_text_box = ElementsTextBoxPage(page_quick_tour)
+    page_quick_tour.goto("https://demoqa.com/elements")
+    page_quick_tour.click('#item-0')
+    assert page_quick_tour.url == "https://demoqa.com/text-box"
     with allure.step('Вводим имя'):
         elements_text_box.fill_full_name('John Bla Blabla')
 
@@ -37,16 +37,16 @@ def test_invalid_email(page):
         elements_text_box.fill_email('nevalid_email')
 
     with allure.step('Ошибка клиентской валидации'):
-        page.click('#submit')
+        page_quick_tour.click('#submit')
         expect(elements_text_box.get_email()).to_have_class(re.compile(r"field-error"))
 
 
 @allure.title('Полное заполнение формы')
-def test_full_fill(page):
-    elements_text_box = ElementsTextBoxPage(page)
-    page.goto("https://demoqa.com/elements")
-    page.click('#item-0')
-    assert page.url == "https://demoqa.com/text-box"
+def test_full_fill(page_quick_tour):
+    elements_text_box = ElementsTextBoxPage(page_quick_tour)
+    page_quick_tour.goto("https://demoqa.com/elements")
+    page_quick_tour.click('#item-0')
+    assert page_quick_tour.url == "https://demoqa.com/text-box"
     with allure.step('Вводим все валидные данные в форму'):
         elements_text_box.fill_full_name('John bla bla bla')
         elements_text_box.fill_email('dev@mail.ru')

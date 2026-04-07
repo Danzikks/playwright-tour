@@ -1,8 +1,11 @@
+from typing import Any, Generator
+
 import pytest
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, Browser, Page
+
 
 @pytest.fixture
-def browser():
+def browser_chrome() -> Generator[Browser, Any, None]:
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=True,
@@ -12,7 +15,13 @@ def browser():
         browser.close()
 
 @pytest.fixture
-def page(browser):
-    page = browser.new_page()
+def page(browser_chrome) -> Generator[Page, Any, None]:
+    page = browser_chrome.new_page()
+    yield page
+    page.close()
+
+@pytest.fixture()
+def page_quick_tour(browser_chrome) -> Generator[Page, Any, None]:
+    page = browser_chrome.new_page(base_url="https://quick-tour.dprusakov.ru/")
     yield page
     page.close()
