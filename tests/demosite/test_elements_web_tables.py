@@ -17,7 +17,7 @@ def test_create_registration_form_and_delete(page):
     elements_web_tables.fill_salary('1200')
     elements_web_tables.fill_department('Coach')
     elements_web_tables.submit()
-    page.screenshot(path="../screenshots/screenshot.png")
+    page.screenshot(path="../../test-results/screenshot_form")
     row = page.locator('tr', has_text='email@mail.ru')
     expect(row).to_be_visible()
     expect(row).to_contain_text('Alex')
