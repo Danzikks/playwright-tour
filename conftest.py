@@ -25,3 +25,7 @@ def page_quick_tour(browser_chrome) -> Generator[Page, Any, None]:
     page = browser_chrome.new_page(base_url="https://quick-tour.dprusakov.ru/")
     yield page
     page.close()
+
+@pytest.fixture()
+def url_quick_tour():
+    return 'https://quick-tour.dprusakov.ru'
